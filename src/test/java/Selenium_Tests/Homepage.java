@@ -9,7 +9,7 @@ public class Homepage {
 	@FindBy(id="usernameinput")
 	private WebElement search;
 	
-	@FindBy(xpath="//*[@id=\"root\"]/div/div/body/p/button")
+	@FindBy(id="signinbutton")
 	private WebElement signinbutton;
 	
 	@FindBy(xpath="//*[@id=\"makeuser\"]")
@@ -28,19 +28,23 @@ public class Homepage {
 	
 	public void signInInput(String usertwo) {
 		signininput.click();
-		signininput.clear();
 		signininput.sendKeys(usertwo);
 	}
 	
 	public void signInButton() {
-		System.out.println(signinbutton);
-		
-		signinbutton.click();
 		signinbutton.click();
 	}
-	
+
 	public Boolean paragraphDisplay() {
 		return paragraph.isDisplayed();
+	}
+
+	public WebElement getSigninbutton() {
+		return signinbutton;
+	}
+
+	public void setSigninbutton(WebElement signinbutton) {
+		this.signinbutton = signinbutton;
 	}
 	
 }

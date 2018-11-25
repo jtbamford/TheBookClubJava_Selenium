@@ -1,5 +1,6 @@
 package Selenium_Tests;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -41,14 +42,47 @@ public class Userpage {
 	@FindBy(xpath="//*[@id=\"root\"]/div/div/body/div[4]/button")
 	private WebElement addbutton;
 	
-	@FindBy(xpath="//*[@id=\"table\"]/div/div[1]/div[2]/table/tbody/tr/td[5]/button")
+	@FindBy(xpath="//*[@id=\"deletebookbutton\"]")
 	private WebElement deletebuttonone;
-	
-	@FindBy(xpath="//*[@id=\"table\"]/div/div[1]/div[2]/table/tbody/tr[1]/td[1]")
-	private WebElement tabindexone;
 	
 	public Boolean reviewDisplay() {
 		return review.isDisplayed();
+	}
+	
+	public Boolean bookDisplay() throws Exception {
+		try {
+		return deletebuttonone.isDisplayed();
+		}
+		catch(Exception e) {
+			return false;
+		}
+	}
+	
+	public void addBook(String rating, String review, String title, String author) {
+		addbookbutton.click();
+		addbooktitle.click();
+		addbooktitle.sendKeys(title);
+		addbookauthor.click();
+		addbookauthor.sendKeys(author);
+		addbookrating.click();
+		addbookrating.sendKeys(rating);
+		addbookreview.click();
+		addbookreview.sendKeys(review);
+	}
+	
+	public void deleteBook() {
+		deletebuttonone.click();
+	}
+	
+	public void searchForUser(String user) {
+		searchbar.click();
+		searchbar.clear();
+		searchbar.sendKeys(user);
+		searchbar.sendKeys(Keys.ENTER);
+	}
+	
+	public void addbookbutton( ) {
+		addbutton.click();
 	}
 	
 	
@@ -61,6 +95,22 @@ public class Userpage {
 	
 	public void backButton() {
 		backbutton.click();
+	}
+
+	public WebElement getDeletebuttonone() {
+		return deletebuttonone;
+	}
+
+	public void setDeletebuttonone(WebElement deletebuttonone) {
+		this.deletebuttonone = deletebuttonone;
+	}
+
+	public WebElement getSearchbar() {
+		return searchbar;
+	}
+
+	public void setSearchbar(WebElement searchbar) {
+		this.searchbar = searchbar;
 	}
 
 }
